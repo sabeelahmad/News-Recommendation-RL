@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <div class="search-form">
+    <form action="" method="POST" novalidate>
+      {{ form.hidden_tag() }}
+      <div class="form-group" style="width: 50%">
+        {{ form.search_query.label }}
+        {{ form.search_query(class_="form-control") }}
+        {% for error in form.search_query.errors %}
+        <small style="color:red" class="form-text text-muted">[{{ error }}]</small>
+        {% endfor %}
+      </div>
+      {{ form.submit(class_="btn btn-primary go") }}
+    </form>
+  </div>
+
+  {% if article_links %}
+  <table class="table table-striped news-link">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">News Article</th>
+      </tr>
+    </thead>
+  {% for article in article_links %}
+  <tbody>
+    <th scope="row">{{ loop.index }}</th>
+    <td>
+      <a href={{ article[1] }} target="_blank">{{ article[0] }}</a>
+    </td>
+  </tbody>
+  {% endfor %}
+  </table>
+  {% endif %}
+{% endblock %}

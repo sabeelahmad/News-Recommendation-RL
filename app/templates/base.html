@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+  <style>
+    .jumbotron {
+      background-color: black;
+      color: white;
+    }
+    .search-form {
+      margin-left: 25px;
+      margin-top: 15px;
+    }
+    .go {
+      width: 5%;
+    }
+    .alert {
+      width: 20%;
+      margin-left: 25px;
+    }
+    .news-link {
+      margin-left: 25px;
+    }
+  </style>
+  <title>{{ title }}</title>
+</head>
+<body>
+  <div class="jumbotron jumbotron-fluid">
+    <div class="container text-center">
+      <h1 class="display-4">Personalised News Recommendation</h1>
+    </div>
+  </div>
+  {% with messages = get_flashed_messages() %}
+  {% if messages %}
+  {% for message in messages %}
+  <div class="alert alert-primary" role="alert">
+    {{ message }}
+  </div>
+  {% endfor %}
+  {% endif %}
+  {% endwith %}
+  {% block content %}{% endblock %}
+</body>
+</html>
